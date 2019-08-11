@@ -10,10 +10,10 @@ export const Nav: React.FC = () => {
       <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
       <Collapse isOpen={isOpen} navbar>
         <NavR className="mr-auto" navbar>
-          <NavItem>
+          <NavItem onClick={() => setIsOpen(false)}>
             <NavLink tag={RRNavLink} to="/" activeClassName="active" exact>Summary</NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem onClick={() => setIsOpen(false)}>
             <NavLink tag={RRNavLink} to="/transactions" activeClassName="active">Transactions</NavLink>
           </NavItem>
         </NavR>
