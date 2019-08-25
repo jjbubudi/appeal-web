@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Nav } from './Nav';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Main } from './Main';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(
-    <Router>
-      <Nav logout={function () { }} />
-    </Router>, div);
+  ReactDOM.render(<Main logout={function () { }} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -1,15 +1,17 @@
 import React from 'react';
-import { Nav } from '../Nav/Nav';
-import { Summary } from '../Summary/Summary';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Transactions } from '../Transactions/Transactions';
+import { useAuth } from '../Auth/Auth';
+import { Login } from '../Login/Login';
+import { Main } from '../Main/Main';
+import { Loading } from './Loading';
 
 export const App: React.FC = () => {
-  return (
-    <Router>
-      <Nav />
-      <Route path="/" exact component={Summary} />
-      <Route path="/transactions/" component={Transactions} />
-    </Router>
-  );
+  const auth = useAuth()
+  switch (auth.type) {
+    case "Authenticated":
+      return <Main logout={() => auth.logout()} />;
+    case "Unauthenticated":
+      return <Login login={() => auth.login()}/>;
+    case "Loading":
+      return <Loading />;
+  }
 };
